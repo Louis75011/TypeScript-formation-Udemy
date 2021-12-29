@@ -1,0 +1,99 @@
+/*
+    Notes de cours sur TypeScript (Udemy)
+    https://www.udemy.com/course/typescript-les-bases-indispensables-et-leurs-pratiques/learn/lecture/27495152#content
+
+    Site officiel : https://www.typescriptlang.org/
+    Commande node install : npm install -g typescript
+
+
+    Langage TypeScript, théorie et pratique (concepts de base, programmation orientée objet, génériques, décorateurs, namespaces et modules).
+
+    La commande "node test.js" (nomDuFichier) vous permet de lancer un log de votre fichier.
+
+
+    TypeScript :
+    Un langage de programmation qui reprend et complète JavaScript en y ajoutant de nouvelles fonctionnalités (gestion des types, meilleure prise en main de la POO).
+
+    L'inconvénient est qu'il n'est pas directement exécuté par les navigateurs ou Node.js (après code compilé/généré)
+
+    L'avantage est qu'il permet l'écriture d'un code robuste et simple d'utilisation une fois maîtrisé.
+
+    Son extension est .ts comme dans main.ts !
+
+
+    CONFIGURATIONS :
+    La commande "tsc main.ts" va vous générer votre fichier JS en ES5 (var).
+    Pour automatiser les changements "tsc main.ts --watch"
+    Exemple de run dev ES6 avec la package.json : "dev": "tsc './Module/main.ts' --target es6 --watch",
+
+    Il est enfin possible de faire un "tsc --init" puis "tsc --watch"
+    Tous nos fichiers vont être compilés dnas un tsconfig.json
+
+    as HTMLDivElement;
+    Nous devons préciser le type de chaque élément, on code systématiquement avec cette logique en TS.
+
+    In. tsconfig.json :
+    "sourceMap": true,   // permet de deboguer le code in. "source" du DevTools (F12 de GG Chrome)
+    "exlude": [] // A la fin permet d'exclure la compilation de certains fichiers .ts
+
+    // Gérer la génération des fichiers TS en JS
+    "outDir": "./distJS"
+    "rootDir": './srcTS'
+
+
+    Prettier for .ts : https://khalilstemmler.com/blogs/tooling/prettier/
+
+
+    1er programme de calcul.
+    EN JS :
+
+    function addition(nb1, nb2) {
+    if (typeof nb1 === "number" && typeof nb2 === "number") {
+    return nb1 + nb2;
+    } else {
+      return "Les valeurs ne sont pas de type NOMBRE";
+    }
+    }
+
+    EN TS :
+    function addition(nb1: number, nb2: number) {
+    return nb1 + nb2;
+    }
+
+    Une façon de faire est d'avoir une fonction JS que l'on améliore/transforme avec TS.
+
+    Pour chaque variable indiquer le type associé (acollade pour les objets ou string[] pour un array par ex) :
+
+    let prenom:string = "Louis";
+    let age:number = 32;
+    let sexe:boolean = true;
+    const sports:string[] = ["foot","rugby"];
+    const adresse:{} = {}
+
+    Le type est implicite avec TS, on le rend explicite en le précisant après les deux-points, cela permet de le rendre plus robuste dans le sens ou une string ne sera jamais traitée comme un number et inversement (entre autres).
+
+
+    // Un type de valeur retourné peut-être simple ou complexe :
+    function myFc(param1: type1, param2: type2): ReturnType {
+    return 1 + 2;
+    }
+
+    Le typage est donc précis, sauf si l'on précise "any", quand rien est définit chaque donnée reste ainsi donc peut être : string, number, booléen, tableau, etc.
+    Il est utile de l'utiliser lorsque l'on ne peut pas définir à l'avance le type de ce que l'on va traiter.
+
+    Une variable peut avoir deux types avec le symbole de l'union
+    var varUnion : string | number = 10;
+
+    La surchage de fonction sert à conserver le type de l'information retournée :
+    function ajout(e1:string,e2number) : string;
+
+    Il existe aussi la création de type, les interfaces, l'union des objets, l'intersection, la propriété dynamique d'objet, le type d'énumération, l'inconnu ou le jamais (sic) et autres fonctionnalités.
+
+    Un objet de type erreur sera toujours de type string mais pourra avoir toutes les propriétés nécessaires
+
+    Le "!" indique que l'on va forcémment récupérer quelque chose qui ne soit pas "null".
+
+    Le "?" ce paramètre signifie que le rendu est optionnel.
+
+    Le "??" permet de vérifier si un paramètre est inexistant (undefined ou null).
+*/

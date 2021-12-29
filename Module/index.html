@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours sur TypeScript (Udemy)</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./dist/main.js"></script>
+    <script defer src="./dist/exercices.js"></script>
+</head>
+
+<body>
+    <h1>Modules et exercices avec TypeScript</h1><br>
+
+    <div id="app">
+
+        <!-- Module 1 -->
+        <h2 id="h2-1">Additionner deux nombres :</h2>
+        <div>
+            <!-- Seulement des nombres peuvent être entrés -->
+            <label for="nb1">Nombre 1 :</label>
+            <input type="number" name="nb1" id="nb1">
+        </div>
+        <div>
+            <label for="nb2">Nombre 2 :</label>
+            <input type="number" name="nb2" id="nb2">
+        </div>
+        <input type="button" value="Calculer" id="calcul">
+        <div class="resultat"></div>
+
+        <h2 id="h2-2">Convertisseur de devise :</h2>
+
+        <!-- Module 2 -->
+        <form>
+            <div>
+                <label>Montant : </label>
+                <input type="number" id="montant" />
+            </div>
+            <div>
+                <label>Devise :</label>
+                <select id="devise-initiale">
+                    <!-- <option value="Dollar">Dollar - ($)</option>
+                    <option value="Euro">Euro - (€)</option> -->
+                </select>
+            </div>
+            <div>
+                <label>Devise à convertir :</label>
+                <select id="devise-finale">
+                    <!-- <option value="Dollar">Dollar - ($)</option>
+                    <option value="Euro" selected>Euro - (€)</option> -->
+                </select>
+            </div>
+        </form>
+        <div id="resultat"></div>
+        <script src="dist/main.js"></script>
+
+    </div>
+</body>
+
+</html>

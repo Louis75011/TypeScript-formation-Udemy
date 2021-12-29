@@ -1,0 +1,12 @@
+{
+  "name": "TypeScript",
+  "version": "1.0.0",
+  "description": "Cours sur Udemy",
+  "scripts": {
+    "dev": "tsc './Module/src/main.ts' --target es6 --watch",
+    "prettier-format": "prettier --config ./prettierrc.json './Module/src/main.ts' --write"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

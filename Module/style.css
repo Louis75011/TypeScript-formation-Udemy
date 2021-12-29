@@ -1,0 +1,29 @@
+body {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    margin: 4rem;
+    background: linear-gradient(to right, rgb(15, 32, 39), rgb(32, 58, 67), rgb(44, 83, 100));
+}
+
+h1, label, select, input {
+    padding: 10px;
+    background-color: aquamarine;
+    opacity: 0.8;
+    margin: 1rem;
+    border-radius: 2rem;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+h2 {
+    color: white;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+#resultat, .resultat {
+    color: lightgray;
+    font-size: 28px;
+    font-weight: bold;
+    font-style: italic;
+}
