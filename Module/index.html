@@ -11,13 +11,14 @@
     <script defer src="./dist/exercices.js"></script>
 </head>
 
-<body>
+    <body>
     <h1>Modules et exercices avec TypeScript</h1><br>
 
     <div id="app">
 
         <!-- Module 1 -->
         <h2 id="h2-1">Additionner deux nombres :</h2>
+
         <div>
             <!-- Seulement des nombres peuvent être entrés -->
             <label for="nb1">Nombre 1 :</label>
@@ -30,9 +31,9 @@
         <input type="button" value="Calculer" id="calcul">
         <div class="resultat"></div>
 
+        <!-- Module 2 -->
         <h2 id="h2-2">Convertisseur de devise :</h2>
 
-        <!-- Module 2 -->
         <form>
             <div>
                 <label>Montant : </label>
@@ -54,8 +55,18 @@
             </div>
         </form>
         <div id="resultat"></div>
-        <script src="dist/main.js"></script>
 
+        <!-- Module 3 -->
+        <h2 id="h2-3">Location de véhicules :</h2>
+
+        <select id="listeVehicule"></select>
+        <button id="louer">Location</button>
+
+    <footer>
+        <h3>Cours sur TypeScript (Udemy)</h3>
+    </footer>
+
+    <!-- Fermeture de la balise d'application entière -->
     </div>
 </body>
 

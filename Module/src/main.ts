@@ -137,11 +137,182 @@ function genererListeOptionDevise(in_devises: DeviseType[]): string {
 }
 
 // MODULE 3 !!!
-// Deviner le drapeau d'un pays (API) :
-// https://restcountries.com/
+// Les classes liées aux véhicules - Les generics
+
+// Enumérations propres
+enum TypeVehicule {
+  BUS = "Bus",
+  VOITURE = "Voiture",
+}
+
+// Classe mère
+abstract class Vehicule {
+  // Définir si privé ou public (underscore pour le private)
+  constructor(private _immatriculation: string, private _type: string) {}
+  get immatriculation() {
+    return this._immatriculation;
+  }
+  get type() {
+    return this._type;
+  }
+}
+
+// Classes filles spécifiques pour les types de véhicules
+class Voiture extends Vehicule {
+  constructor(immatriculation: string) {
+    super(immatriculation, TypeVehicule.VOITURE);
+  }
+}
+class Bus extends Vehicule {
+  constructor(immatriculation: string) {
+    super(immatriculation, TypeVehicule.BUS);
+  }
+}
+
+// Generics
+class ListeVehicules<T> {
+  private _liste: Array<T> = [];
+
+  get liste() {
+    return this._liste;
+  }
+
+  // Fonctions d'ajout et de retrait véhicule
+  ajouterVehicule(vehicule: T) {
+    this._liste.push(vehicule);
+  }
+  retirerVehicule() {
+    if (this._liste.length > 0) {
+      this._liste.pop();
+    }
+  }
+  louerVehicule(vehicule:T){
+    // La fonction splice pour retirer l'élement et l'indexOf recherche la position de l'index et le nombre d'éléments à supprimer
+    this._liste.splice(this._liste.indexOf(vehicule),1);
+}
+}
+
+// Création du parc automobile en classe
+class ParcAuto {
+  // Type Voiture puis Bus entre balises
+  private _voitures: ListeVehicules<Voiture> = new ListeVehicules<Voiture>();
+  private _bus: ListeVehicules<Bus> = new ListeVehicules<Bus>();
+
+  get voitures() {
+    return this._voitures;
+  }
+  get bus() {
+    return this._bus;
+  }
+
+  // Ajout du véhicule selon sa catégorie voiture ou bus
+  public ajouterVehicule<T extends Vehicule>(vehicule: T) {
+    if (vehicule.type === TypeVehicule.VOITURE) {
+      this._voitures.ajouterVehicule(vehicule);
+    } else if (vehicule.type === TypeVehicule.BUS) {
+      this._bus.ajouterVehicule(vehicule);
+    }
+  }
+  // Nouvelle fonction de retrait
+  louerVehicule(type: TypeVehicule) {
+    if (type === TypeVehicule.BUS) {
+      this._bus.retirerVehicule();
+    } else if (type === TypeVehicule.VOITURE) {
+      this._voitures.retirerVehicule();
+    }
+  }
+  // Autre fonction d'affichage
+  afficherParc() {
+    // Voiture
+    console.log("Liste de voitures :");
+    for (let v of this._voitures.liste) {
+      console.log("Immatriculation : " + v.immatriculation);
+    }
+    // Bus
+    console.log("Liste des bus :");
+    for (let b of this._bus.liste) {
+      console.log("Immatriculation : " + b.immatriculation);
+    }
+  }
+  // Récupération du véhicule
+  getVehicules(): Vehicule[] {
+    // Vehicule est la classe abstraite
+    let tab: Vehicule[] = [];
+    // Ajout de tous les véhicules grâce aux 3 points qui bouclent
+    tab.push(...this._bus.liste, ...this._voitures.liste);
+    return tab;
+  }
+
+  // Possibilité de louer un véhicule en particulier
+  louerVehiculeImmat(immat: string) {
+    let vehicule = this.getVehiculeImmat(immat); //vehicule ou null
+    if (vehicule) {
+      if (vehicule.type === TypeVehicule.BUS) {
+        this._bus.louerVehicule(vehicule);
+      } else if (vehicule.type === TypeVehicule.VOITURE) {
+        this._voitures.louerVehicule(vehicule);
+      }
+    } else {
+      throw {message: "Erreur d'immatriculation"};
+    }
+  }
+
+  private getVehiculeImmat(immat: string): Vehicule | null {
+    let vehicules = this.getVehicules(); //tableau de tous les véhicules du parc
+    for (let v of vehicules) {
+      if (v.immatriculation === immat) {
+        return v;
+      }
+    }
+    return null;
+  }
+}
+
+// Générer tout notre parc automobiles sans informations dans son constructeur
+let parcMGA = new ParcAuto();
+// Envoie des véhicules sans nécessité du sous-type déjà identifié et directement dans le log
+parcMGA.ajouterVehicule(new Bus("XX1111XX"));
+parcMGA.ajouterVehicule(new Bus("YY2222YY"));
+parcMGA.ajouterVehicule(new Bus("ZZ3333ZZ"));
+parcMGA.ajouterVehicule(new Voiture("AB1111CD"));
+parcMGA.ajouterVehicule(new Voiture("EF2222GH"));
+parcMGA.ajouterVehicule(new Voiture("IJ3333KL"));
+parcMGA.ajouterVehicule(new Voiture("IJ3334VZ"));
+// Location de véhicules (retirer de la liste)
+parcMGA.louerVehicule(TypeVehicule.VOITURE);
+
+console.log(parcMGA.getVehicules());
+
+// Interraction avec le DOM (balise select)
+const selectListe = document.querySelector(
+  "#listeVehicule",
+)! as HTMLSelectElement;
+selectListe.innerHTML = creerListeVehiculeSelect();
+
+// Ecoute du bouton de location de véhicule
+const boutonLouer = document.querySelector("#louer")! as HTMLButtonElement;
+boutonLouer.addEventListener("click", () => {
+  // Récupération de la valeur et de son parc automobile
+  const immat = selectListe.value;
+  parcMGA.louerVehiculeImmat(immat);
+  // Création finale HTML
+  selectListe.innerHTML = creerListeVehiculeSelect();
+});
+
+// Fonction d'ajout de liste dans mon programme principal
+function creerListeVehiculeSelect(): string {
+  let txt = "";
+  // Boucle de création de toute les données
+  for (let v of parcMGA.getVehicules()) {
+    txt += `<option value="${v.immatriculation}">${v.type} : ${v.immatriculation}</option>`;
+  }
+  return txt;
+}
 
 /*
 Module
 tsc --watch
 npm run prettier-format
 */
+
+//
