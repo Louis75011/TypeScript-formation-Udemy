@@ -277,7 +277,6 @@ parcMGA.ajouterVehicule(new Bus("ZZ3333ZZ"));
 parcMGA.ajouterVehicule(new Voiture("AB1111CD"));
 parcMGA.ajouterVehicule(new Voiture("EF2222GH"));
 parcMGA.ajouterVehicule(new Voiture("IJ3333KL"));
-parcMGA.ajouterVehicule(new Voiture("IJ3334VZ"));
 // Location de véhicules (retirer de la liste)
 parcMGA.louerVehicule(TypeVehicule.VOITURE);
 
@@ -309,10 +308,11 @@ function creerListeVehiculeSelect(): string {
   return txt;
 }
 
+// Module 4 !!!
+// Les décorateurs
+
 /*
 Module
 tsc --watch
 npm run prettier-format
 */
-
-//
