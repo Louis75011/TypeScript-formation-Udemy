@@ -1,8 +1,8 @@
 /*
-    Notes de cours sur TypeScript (Udemy)
+    Mes notes de cours sur TypeScript (Udemy)
     https://www.udemy.com/course/typescript-les-bases-indispensables-et-leurs-pratiques/learn/lecture/27495152#content
 
-    Site officiel : https://www.typescriptlang.org/
+    Site officiel avec documentation : https://www.typescriptlang.org/
     Commande node install : npm install -g typescript
 
 
@@ -96,4 +96,18 @@
     Le "?" ce paramètre signifie que le rendu est optionnel.
 
     Le "??" permet de vérifier si un paramètre est inexistant (undefined ou null).
+
+    Les décorateurs s'utilisent avec la syntaxe @
+    Se sont des fonctions qui s'utilisent avec des classes. Elle permettent de décrire l'élément d'une classe et s'exécute lors de l'intégration de la classe.
+    Il faut l'ajouter depuis le fichier config de TS, c'est encore une pratique "expérimentale".
+    @decoClass
+    class Perso {} -- voir la doc --
+
+    Generics Type :
+    Permet de définir des composants pouvant travailler avec plusieurs types afin de les rendre réutilisables (ils s'utilisent avec fonctions et arrays).
+
+    Import de fichier en TS :
+    Méthodes possibles - NameSpaces - Modules JS
+    
+    L'ajout de balise script demeure possible mais non pratique en cas de fichiers nombreux.
 */

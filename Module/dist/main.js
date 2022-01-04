@@ -273,7 +273,66 @@ function creerListeVehiculeSelect() {
     return txt;
 }
 // Module 4 !!!
-// Les décorateurs
+// Les aliments
+// Création de chacun des aliments
+new Fruit("Pomme", 53, 0.2, 14, 0.3, "pomme.png");
+new Fruit("Poire", 49, 0.1, 15, 0.4, "poire.png");
+new Charcuterie("Salami", 270, 26.5, 1.3, 12, "salami.png");
+new Charcuterie("Saucisson", 300, 33.1, 1.9, 27.6, "saucisson.png");
+// Catégorisation selon les aliments
+let listeClasseAliment = {
+    mauvais: Charcuterie.listeCharcuteries,
+    moyen: [],
+    bon: Fruit.listeFruit,
+};
+listeAliment();
+// Interraction avec le DOM
+function listeAliment() {
+    const typeAlimentSouhaite = document.querySelector("#type").value;
+    let aliments = getListeAlimentType(typeAlimentSouhaite);
+    const baliseTbody = document.querySelector("#listeAliments");
+    // Stocker dans une variable les aliments, passer sur tous et toutes leurs données par balise
+    let listeAlimentBalise = "";
+    if (aliments.length > 0) {
+        for (let aliment of aliments) {
+            listeAlimentBalise += `
+                <tr>
+                    <td>${aliment.nom}</td>
+                    <td>${aliment.lipide}</td>
+                    <td>${aliment.glucide}</td>
+                    <td>${aliment.proteine}</td>
+                    <td>${aliment.sante}</td>
+                    <td><img src="images/${aliment.image}" width="100px"/></td>
+                </tr>
+            `;
+        }
+        baliseTbody.innerHTML = listeAlimentBalise;
+    }
+    else {
+        baliseTbody.innerHTML = "Aucune données";
+    }
+}
+// Fonction en switch/case de récupération des aliments 
+function getListeAlimentType(type) {
+    switch (type) {
+        case "Tous":
+            return Aliment.listeAliments;
+            break;
+        // Charcuterie
+        case "Mauvais":
+            return listeClasseAliment.mauvais;
+            break;
+        // Aucuns aliments sont de "valeurs nutritionnelles" moyennes
+        case "Moyen":
+            return listeClasseAliment.moyen;
+            break;
+        // Fruits
+        case "Bon":
+            return listeClasseAliment.bon;
+            break;
+        default: return [];
+    }
+}
 /*
 Module
 tsc --watch

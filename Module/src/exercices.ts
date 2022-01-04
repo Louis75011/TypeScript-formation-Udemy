@@ -2,7 +2,7 @@
 console.log("Hello World");
 
 // Le type est ici explicite avec TS
-let prenom: string = "Louis";
+let prenom2: string = "Louis";
 let age: number = 32;
 let sexe: boolean = true;
 const sports: string[] = ["foot", "rugby"];
@@ -27,7 +27,7 @@ let afficherPersonne = (
     cp: number;
   },
 ) => {
-  console.log(`Prenom : ${in_prenom}`);
+  console.log(`Prenom2 : ${in_prenom}`);
   console.log("Age : " + in_age);
   console.log("Sexe : " + (in_sexe ? "Homme" : "Femme"));
   for (let sport of in_sports) {
@@ -37,7 +37,7 @@ let afficherPersonne = (
   console.log(in_adresse.ligne);
   console.log(in_adresse.cp + " " + in_adresse.ville);
 };
-afficherPersonne(prenom, age, sexe, sports, adresse);
+afficherPersonne(prenom2, age, sexe, sports, adresse);
 
 // Les bases : fonctions, précision de type complexe :
 let anniv = function anniv(in_age: number): number {
@@ -212,3 +212,9 @@ console.log(varUnknow);
 // function generateError(msg: string): never {
 //   throw {message: msg};
 // } // Throw relève une exception en cas d'erreur
+
+const notes:number[] = [];
+notes.push(14, 12, 13);
+// Nouvelle syntaxe TS
+const notes2:Array<number> = [14, 12, 15]
+console.log(notes2);

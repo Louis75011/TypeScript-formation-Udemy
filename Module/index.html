@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cours sur TypeScript (Udemy)</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="./dist/main.js"></script>
-    <script defer src="./dist/exercices.js"></script>
+    <script defer src="./dist/bundle.js"></script>
+    <!-- <script defer src="./dist/exercices.js"></script> -->
 </head>
 
-    <body>
-    <h1>Modules et exercices avec TypeScript</h1><br>
-
+<body>
     <div id="app">
+        <header>
+            <h1>Modules et exercices avec TypeScript</h1><br>
+        </header>
 
         <!-- Module 1 -->
         <h2 id="h2-1">Additionner deux nombres :</h2>
@@ -62,11 +63,41 @@
         <select id="listeVehicule"></select>
         <button id="louer">Location</button>
 
-    <footer>
-        <h3>Cours sur TypeScript (Udemy)</h3>
-    </footer>
+        <!-- Module 4 -->
+        <h2 id="h2-4">Affichage choisi des aliments :</h2>
 
-    <!-- Fermeture de la balise d'application entière -->
+        <!-- Selecteur -->
+        <div>
+            <span>Afficher les aliments par valeur nutritionelle :</span>
+            <select id="type">
+                <option value="Tous">toutes</option>
+                <option value="Mauvais">mauvaise</option>
+                <option value="Moyen">moyenne</option>
+                <option value="Bon">bonne</option>
+            </select>
+        </div>
+        <!-- Tableau -->
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Nom</td>
+                        <td>Lipide</td>
+                        <td>Glucide</td>
+                        <td>Proteine</td>
+                        <td>Classe</td>
+                        <td>Image</td>
+                    </tr>
+                </thead>
+                <tbody id="listeAliments"></tbody>
+            </table>
+        </div>
+
+        <!-- Bas de page -->
+        <footer>
+            <h3>Cours sur TypeScript (Udemy)</h3>
+        </footer>
+        <!-- Fermeture de la balise d'application entière -->
     </div>
 </body>
 
