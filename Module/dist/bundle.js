@@ -159,6 +159,29 @@ notes.push(14, 12, 13);
 // Nouvelle syntaxe TS
 const notes2 = [14, 12, 15];
 console.log(notes2);
+// Bonus Grafikart
+// https://grafikart.fr/tutoriels/typescript-781
+// Erreur sur la variable dont le type ne correspond pas à la valeur
+// let a : number = "lol"
+function isPair(nombre) {
+    return nombre % 2 === 0;
+}
+console.log(isPair);
+function salut(t) {
+    let out = [];
+    for (let item of t) {
+        out.push('Salut' + item);
+    }
+}
+salut(['aze', 'eaz', 'zea']);
+// Définition du type des variables + ": bolean" est ce que l'on renvoie + identification des types :
+function isPair2(number) {
+    if (typeof number !== 'number') {
+        number = parseInt(number, 10);
+    }
+    return number % 2 === 0;
+}
+isPair2(2);
 var App;
 (function (App) {
     let ClassAliment;

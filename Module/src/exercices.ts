@@ -218,3 +218,32 @@ notes.push(14, 12, 13);
 // Nouvelle syntaxe TS
 const notes2:Array<number> = [14, 12, 15]
 console.log(notes2);
+
+// Bonus Grafikart
+// https://grafikart.fr/tutoriels/typescript-781
+
+// Erreur sur la variable dont le type ne correspond pas à la valeur
+// let a : number = "lol"
+
+function isPair (nombre : number) : boolean {
+  return nombre % 2 === 0;
+}
+console.log(isPair);
+
+
+function salut(t: Array<string>): void{
+  let out = []
+  for (let item of t){
+    out.push('Salut' + item)
+  }
+}
+salut(['aze', 'eaz', 'zea'])
+
+// Définition du type des variables + ": bolean" est ce que l'on renvoie + identification des types :
+function isPair2 (number:number | string): boolean{
+  if (typeof number !== 'number') {
+    number = parseInt(<string>number, 10);
+  }
+  return <number>number % 2 === 0
+}
+isPair2(2);

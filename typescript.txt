@@ -12,7 +12,7 @@
 
 
     TypeScript :
-    Un langage de programmation qui reprend et complète JavaScript en y ajoutant de nouvelles fonctionnalités (gestion des types, meilleure prise en main de la POO).
+    Un langage de programmation qui reprend et complète JavaScript (un sur-ensemble) en y ajoutant de nouvelles fonctionnalités (gestion des types, meilleure prise en main de la POO).
 
     L'inconvénient est qu'il n'est pas directement exécuté par les navigateurs ou Node.js (après code compilé/généré)
 
@@ -110,4 +110,6 @@
     Méthodes possibles - NameSpaces - Modules JS
     
     L'ajout de balise script demeure possible mais non pratique en cas de fichiers nombreux.
+
+    Mots clés : private, public, static, etc.
 */
